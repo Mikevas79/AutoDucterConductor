@@ -2,7 +2,7 @@ Hello,
 
 This is my NetSuite Suitescript 2.x version of a custom script I made to automatically make new Items based on the entered Item Name and Number. 
 
-The logic in this script is currently set up for a company with specific custom fields and parts used there so they will need to be changed to accomodate your company.
+The logic in this script is currently set up to make Air Ducts for a company with specific custom fields and parts used there so they will need to be changed to accomodate your company.
 
 When a user types in a Specific Item Name/Number in a Lot Numbered Assembly. It will automatically make this item by filling out around 30 boxes with the correct item information.
 The script also does the math invoved to create a Bill of Materials with the correct amounts and materials needed for each item so that way the Manufaturing team can make the item immidatly as soon as the Sales person puts the item name/number in. 
