@@ -1,16 +1,22 @@
-Hello, 
+NetSuite SuiteScript 2.x - Automated Item Creation & BOM Generation
+Hello and welcome!
 
-This is my NetSuite Suitescript 2.x version of a custom script I made to automatically make new Items based on the entered Item Name and Number. 
+This repository contains a SuiteScript 2.x custom script designed to streamline the creation of new items in NetSuite. The script automatically generates items based on a specified Item Name and Number and populates essential fields with the correct information, saving time and reducing errors.
 
-The logic in this script is currently set up to make Air Ducts for a company with specific custom fields and parts used there so they will need to be changed to accomodate your company.
+Key Features:
+Automated Item Creation: When a user enters a specific Item Name/Number in a Lot Numbered Assembly, the script automatically creates the item, filling out about 30 fields with the required details.
 
-When a user types in a Specific Item Name/Number in a Lot Numbered Assembly. It will automatically make this item by filling out around 30 boxes with the correct item information.
-The script also does the math invoved to create a Bill of Materials with the correct amounts and materials needed for each item so that way the Manufaturing team can make the item immidatly as soon as the Sales person puts the item name/number in. 
+Bill of Materials (BOM) Generation: The script calculates and creates the BOM for the item, ensuring the correct materials and quantities are included for manufacturing. This ensures the manufacturing team can start production as soon as the sales team enters the item.
 
-There is also functionality for if you do not follow the naming convention, you will get a NetSuite Error Screen. This helps prevent potential errror's when somone tries to make somthing, the company does not have based on their inputted Item Name/Number.
+Error Prevention: The script includes a safeguard to prevent errors caused by incorrect Item Names/Numbers. If the naming convention is not followed, the script triggers a NetSuite error screen to stop the process, helping to avoid creating items that don't exist.
 
-To use this in netsuite, upload this to your scripts, under script deployment, select Lot Numbered Assembly/Bill of Materials. This will now run for your Lot Numbered Assembly items.
-
-Note: Currently this is set to only work for a subsidary with the internal ID of 2. Change or remove this on line 155 if you have a different subidary internal ID. You must also have an Item Name/Number that is excatly 16 characters.
+How to Use:
+Upload the script to your NetSuite account.
+In Script Deployment, select Lot Numbered Assembly or Bill of Materials as the deployment type.
+Once deployed, the script will automatically run whenever an item is entered in a Lot Numbered Assembly.
+Important Notes:
+The script is currently configured for a subsidiary with the internal ID of 2. If your company uses a different subsidiary ID, modify or remove the check on line 155.
+The Item Name/Number must be exactly 16 characters long for the script to function properly.
+Feel free to modify the logic to better fit your company's needs (e.g., different custom fields or parts).
 
 Thanks for checking out my script!
