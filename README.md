@@ -1,22 +1,91 @@
-NetSuite SuiteScript 2.x - Automated Item Creation & BOM Generation
-Hello and welcome!
+Demo: NetSuite SuiteScript 2.x User Event Script
 
-This repository contains a SuiteScript 2.x custom script designed to streamline the creation of new items in NetSuite. The script automatically generates items based on a specified Item Name and Number and populates essential fields with the correct information, saving time and reducing errors.
+A lightweight demonstration of key SuiteScript 2.x patterns, suitable for showcasing on GitHub.
 
-Key Features:
-Automated Item Creation: When a user enters a specific Item Name/Number in a Lot Numbered Assembly, the script automatically creates the item, filling out about 30 fields with the required details.
+Overview
 
-Bill of Materials (BOM) Generation: The script calculates and creates the BOM for the item, ensuring the correct materials and quantities are included for manufacturing. This ensures the manufacturing team can start production as soon as the sales team enters the item.
+This repository contains a simplified UserEventScript for NetSuite SuiteScript 2.x. It illustrates best practices for:
 
-Error Prevention: The script includes a safeguard to prevent errors caused by incorrect Item Names/Numbers. If the naming convention is not followed, the script triggers a NetSuite error screen to stop the process, helping to avoid creating items that don't exist.
+Defaulting Fields: Setting default values in beforeLoad
 
-How to Use:
-Upload the script to your NetSuite account.
-In Script Deployment, select Lot Numbered Assembly or Bill of Materials as the deployment type.
-Once deployed, the script will automatically run whenever an item is entered in a Lot Numbered Assembly.
-Important Notes:
-The script is currently configured for a subsidiary with the internal ID of 2. If your company uses a different subsidiary ID, modify or remove the check on line 155.
-The Item Name/Number must be exactly 16 characters long for the script to function properly.
-Feel free to modify the logic to better fit your company's needs (e.g., different custom fields or parts).
+Form Customization: Adding custom fields, field groups, and user messages
 
-Thanks for checking out my script!
+Validation: Enforcing naming conventions in beforeSubmit
+
+Post-Save Logic: Performing actions in afterSubmit (e.g., flagging a record)
+
+Search Helpers: A reusable function to find an item’s internal ID by name
+
+Note: This demo uses placeholder IDs and patterns. It’s stripped of any proprietary business logic and can be adapted to your own NetSuite instance.
+
+Key Features
+
+Defaults & UI Hooks (beforeLoad)
+
+Sets a default Tax Schedule (taxschedule = 4).
+
+Injects a grouped Auto-Build checkbox (custpage_auto_build).
+
+Displays a brief informational banner on form load.
+
+Business Validation (beforeSubmit)
+
+Validates the SKU (itemid) against a regex pattern: ABC-1234.
+
+Throws a NetSuite error if the format is incorrect, preventing bad data.
+
+Post-Save Stubs (afterSubmit)
+
+Logs record creation/edits.
+
+Sets a custom “processed” flag (custitem_processed) via record.submitFields.
+
+Captures success and errors via log.audit and log.error.
+
+Helper Function
+
+getItemId(name): Searches inventoryitem records by name and returns the first internal ID.
+
+Installation & Deployment
+
+Clone this repo
+
+git clone https://github.com/your-username/netsuite-suitescript-demo.git
+
+Upload to NetSuite
+
+Navigate to Customization > Scripting > Scripts in your NetSuite account.
+
+Click New and choose SuiteScript 2.x.
+
+Upload netsuite-demo-userevent.js from this repo.
+
+Deploy
+
+Create a Script Deployment for record types such as Inventory Item or Assembly Item.
+
+Set Event Types to Before Load, Before Submit, After Submit.
+
+Save and test by creating or editing an item record.
+
+Customization
+
+Field IDs & Defaults
+
+Update taxschedule ID or value as needed.
+
+Change or add form fields in beforeLoad under the custpage_helper_grp group.
+
+Validation Patterns
+
+Modify the regex in beforeSubmit to fit your SKU or naming conventions.
+
+Post-Save Logic
+
+Extend afterSubmit to integrate with external services, send email notifications, or update related records.
+
+Helper Searches
+
+Adapt getItemId to search other record types (e.g., record.Type.CUSTOMER).
+
+
