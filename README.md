@@ -1,4 +1,4 @@
-Demo: NetSuite SuiteScript 2.x User Event Script
+Demo: NetSuite SuiteScript 2.x User Event Script (My Original Script was over 1500 lines but reduced to 100 lines to protect origional company information)
 
 A lightweight demonstration of key SuiteScript 2.x patterns, suitable for showcasing on GitHub.
 
